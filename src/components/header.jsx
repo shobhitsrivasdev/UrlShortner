@@ -6,27 +6,24 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {logout} from "@/db/apiAuth";
+import { logout } from "@/db/apiAuth";
 import useFetch from "@/hooks/use-fetch";
-import {Avatar, AvatarFallback, AvatarImage} from "@radix-ui/react-avatar";
-import {LinkIcon, LogOut} from "lucide-react";
-import {Link, useNavigate} from "react-router-dom";
-import {BarLoader} from "react-spinners";
-import {Button} from "./ui/button";
-import {UrlState} from "@/context";
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { LinkIcon, LogOut } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { BarLoader } from "react-spinners";
+import { Button } from "./ui/button";
+import { UrlState } from "@/context";
 
 const Header = () => {
-  const {loading, fn: fnLogout} = useFetch(logout);
+  const { loading, fn: fnLogout } = useFetch(logout);
   const navigate = useNavigate();
 
-  const {user, fetchUser} = UrlState();
+  const { user, fetchUser } = UrlState();
 
   return (
     <>
       <nav className="py-4 flex justify-between items-center">
-        <Link to="/">
-          <img src="/logo.png" className="h-16" alt="Trimrr Logo" />
-        </Link>
         <div className="flex gap-4">
           {!user ? (
             <Button onClick={() => navigate("/auth")}>Login</Button>
